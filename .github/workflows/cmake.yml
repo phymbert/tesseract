@@ -113,19 +113,6 @@ jobs:
         run: |
           cmake --build build --config Release --target check
 
-      - name: Make and run Unit Tests (clang)
-        if: startsWith(matrix.config.cxx, 'clang')
-        run: |
-             cmake --build build --config Release --target check
-
-      - name: Make and run Unit Tests (unset LANG needed for g++-8, g++-9, g++-10 on macOS)
-        if: runner.os == 'macOS' && startsWith(matrix.config.cxx, 'g')
-        shell: bash
-        run: |
-             unset LANG LC_ALL LC_CTYPE
-             locale
-             cmake --build build --config Release --target check
-
       - name: Display Tesseract Version
         run: |
              build/inst/bin/tesseract -v
