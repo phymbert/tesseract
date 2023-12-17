@@ -162,5 +162,5 @@ foreach (unittest ${TESSERACT_UNITTESTS})
     add_dependencies(build_tests ${unittest}_test)
 endforeach ()
 
-add_custom_target(check COMMAND ctest)
+add_custom_target(check COMMAND ctest --output-on-failure)
 add_dependencies(check build_tests)
