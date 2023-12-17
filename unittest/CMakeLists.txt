@@ -98,7 +98,7 @@ if (BUILD_TRAINING_TOOLS)
     endif ()
 endif ()
 
-set(TESSBIN_DIR ${CMAKE_BINARY_DIR}/bin/tesseract)
+set(TESSBIN_DIR ${CMAKE_BINARY_DIR}/bin)
 set(TESSDATA_DIR ${CMAKE_SOURCE_DIR}/../tessdata)
 set(LANGDATA_DIR ${CMAKE_SOURCE_DIR}/../langdata_lstm)
 set(TESTING_DIR ${CMAKE_SOURCE_DIR}/test/testing)
