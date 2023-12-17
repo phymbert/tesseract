@@ -11,7 +11,10 @@ FetchContent_Declare(
         SOURCE_DIR ${CMAKE_SOURCE_DIR}/unittest/third_party/googletest
 )
 FetchContent_Populate(googletest)
-add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
+add_subdirectory(${googletest_SOURCE_DIR}
+        ${googletest_BINARY_DIR}
+        EXCLUDE_FROM_ALL
+)
 
 include(GoogleTest)
 
