@@ -15,6 +15,11 @@ add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
 
 include(GoogleTest)
 
+# FIXME As in the Makefile.am (see fileio_test_LDADD), some tests will fail to compile if BUILD_TRAINING_TOOLS=OFF
+if (NOT BUILD_TRAINING_TOOLS)
+    message(WARNING "Tesseract-dev: running unit tests without building training tools is currently not supported")
+endif ()
+
 # core tests
 set(TESSERACT_UNITTESTS
         apiexample
@@ -51,6 +56,11 @@ set(TESSERACT_UNITTESTS
         tatweel
         tfile
 )
+
+set(tatweel_test_src
+        third_party/utf/rune.c
+        util/utf8/unicodetext.cc
+        util/utf8/unilib.cc)
 
 # Legacy engine tests
 if (NOT DISABLED_LEGACY_ENGINE)
@@ -115,13 +125,13 @@ set(TESSERACT_UNITTEST_CXXFLAG
 add_custom_target(build_tests)
 
 foreach (unittest ${TESSERACT_UNITTESTS})
+    set(${unittest}_test_src
+            ${${unittest}_test_src}
+            ${unittest}_test.cc)
     add_executable(
             ${unittest}_test
             EXCLUDE_FROM_ALL
-            ${unittest}_test.cc
-            third_party/utf/rune.c
-            util/utf8/unicodetext.cc
-            util/utf8/unilib.cc
+            ${${unittest}_test_src}
     )
     add_dependencies(${unittest}_test tesseract)
     target_compile_options(${unittest}_test PRIVATE ${TESSERACT_UNITTEST_CXXFLAG})
