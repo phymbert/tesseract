@@ -2,9 +2,9 @@
 # Build Tesseract on Windows using cmake. No Training Tools.
 name: cmake-win64
 on:
-  #push:
-  schedule:
-    - cron: 0 23 * * *
+  push:
+    branches:
+      - "phymbert/features/cmake-unittest-target-test-github-workflow"
   workflow_dispatch:
 
 env:
