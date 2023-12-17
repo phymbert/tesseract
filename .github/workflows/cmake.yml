@@ -64,6 +64,12 @@ jobs:
         with:
              submodules: recursive
 
+      - name: Download fonts, tessdata and langdata required for tests
+        run: |
+          git clone https://github.com/egorpugin/tessdata tessdata_unittest
+          cp tessdata_unittest/fonts/* test/testing/
+          mv tessdata_unittest/* ../
+
       - name: Configure Tesseract (Linux)
         run: |
              mkdir build
@@ -115,12 +121,6 @@ jobs:
         run: |
              build/inst/bin/lstmtraining -v
              build/inst/bin/text2image -v
-
-      - name: Download fonts, tessdata and langdata required for tests
-        run: |
-             git clone https://github.com/egorpugin/tessdata tessdata_unittest
-             cp tessdata_unittest/fonts/* test/testing/
-             mv tessdata_unittest/* ../
 
       - name: List languages in different tessdata-dir
         run: |
