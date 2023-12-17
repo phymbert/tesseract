@@ -111,9 +111,28 @@ if (BUILD_TRAINING_TOOLS)
     endif ()
 endif ()
 
+# Look for top source directory parent for traineddata files
+execute_process(
+        COMMAND pwd
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/..
+        OUTPUT_VARIABLE CMAKE_SOURCE_PARENT_DIR
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+# Absolute path of directory 'tessdata' with traineddata files
+set(TESSDATA_DIR ${CMAKE_SOURCE_PARENT_DIR}/tessdata)
+IF(NOT EXISTS ${TESSDATA_DIR})
+    message(FATAL_ERROR "TESSDATA_DIR=${TESSDATA_DIR} directory does not exist, please see unittest requirements in README.md")
+endif ()
+
+set(LANGDATA_DIR ${CMAKE_SOURCE_PARENT_DIR}/langdata_lstm)
+IF(NOT EXISTS ${LANGDATA_DIR})
+    message(FATAL_ERROR "LANGDATA_DIR=${LANGDATA_DIR} directory does not exist, please see unittest requirements in README.md")
+endif ()
+
 set(TESSBIN_DIR ${CMAKE_BINARY_DIR}/bin)
-set(TESSDATA_DIR ${CMAKE_SOURCE_DIR}/../tessdata)
-set(LANGDATA_DIR ${CMAKE_SOURCE_DIR}/../langdata_lstm)
+
+# Absolute path of directory 'testing' with test images and ground truth texts
 set(TESTING_DIR ${CMAKE_SOURCE_DIR}/test/testing)
 set(TESTDATA_DIR ${CMAKE_SOURCE_DIR}/test/testdata)
 
