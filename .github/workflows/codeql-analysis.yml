@@ -13,7 +13,8 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - phymbert/features/3798-rendering-resolution-option-github-workflow
     paths:
       - '**.cpp'
       - '**.h'

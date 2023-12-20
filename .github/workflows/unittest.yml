@@ -2,7 +2,9 @@ name: unittest
 # autotools build on ubuntu. unittests with address sanitizers. with openmp.
 # ubuntu-20.04-gcc-unittest - CI runs out of diskspace.
 on:
-  #push:
+  push:
+    branches:
+      - phymbert/features/3798-rendering-resolution-option-github-workflow
   schedule:
     - cron: 0 0 * * *
   workflow_dispatch:

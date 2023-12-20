@@ -1,6 +1,8 @@
 name: msys2-4.1.1
 on:
-  #push:
+  push:
+    branches:
+      - phymbert/features/3798-rendering-resolution-option-github-workflow
   schedule:
     - cron: 0 18 1 * *
 jobs:

@@ -2,6 +2,9 @@ name: CIFuzz
 # OSS-Fuzz CI
 # See https://google.github.io/oss-fuzz/getting-started/continuous-integration/
 on:
+  push:
+    branches:
+      - phymbert/features/3798-rendering-resolution-option-github-workflow
   pull_request:
     branches:
     - main

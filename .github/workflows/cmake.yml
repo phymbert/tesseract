@@ -2,7 +2,9 @@ name: cmake
 # cmake build of tesseract and training tools on ubuntu and macOS homebrew using Ninja.
 # test command line version of tesseract. run basicapitest.
 on:
-  #push:
+  push:
+    branches:
+      - phymbert/features/3798-rendering-resolution-option-github-workflow
   schedule:
     - cron: 0 21 * * *
 

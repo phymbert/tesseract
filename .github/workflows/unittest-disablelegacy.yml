@@ -3,7 +3,9 @@ name: unittest-disablelegacy
 # currently some unittests are failing with disabled legacy engine.
 
 on:
-  #push:
+  push:
+    branches:
+      - phymbert/features/3798-rendering-resolution-option-github-workflow
   schedule:
     - cron: 0 10 * * *
 

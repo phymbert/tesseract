@@ -1,7 +1,9 @@
 name: msys2
 # msys2 build for tesseract -head from main branch.
 on:
-  #push:
+  push:
+    branches:
+      - phymbert/features/3798-rendering-resolution-option-github-workflow
   schedule:
     - cron: 0 17 * * *
 jobs:

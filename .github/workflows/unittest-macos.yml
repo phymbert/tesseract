@@ -1,7 +1,9 @@
 name: unittest-macos
 # autotools build on homebrew. unittests with address sanitizers. with openmp.
 on:
-  #push:
+  push:
+    branches:
+      - phymbert/features/3798-rendering-resolution-option-github-workflow
   schedule:
     - cron: 0 0 * * *
 
